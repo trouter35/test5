@@ -41,23 +41,24 @@ public class MainActivity extends AppCompatActivity {
         Log.d("alupoint","aksdjhfkasdjhf");
 
         requestQueue = Volley.newRequestQueue(this);
-        URL="https://bqhcfadj.herokuapp.com/news";
+        URL="https://bqhcfadj.herokuapp.com/news_stories";
 
         JsonObjectRequest getData = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject resp) {
-               // Log.d("alupoint2","ya ni ayi pugiyo");
+                // Log.d("alupoint2","ya ni ayi pugiyo");
                 try {
-                 //   Log.d("this is the response",""+resp);
+                    //   Log.d("this is the response",""+resp);
                     JSONArray json_data = resp.getJSONArray("news_stories");
-                    for (int i = 0; i < json_data.length(); i++) {
-                      //  Log.v("test","This is the data"+json_data);
+                    for (int i = json_data.length()-1; i >=0 ; i--) {
+                        //  Log.v("test","This is the data"+json_data);
                         news News = new news();
                         JSONObject temp = json_data.getJSONObject(i);
-                      //  News.setTitle(json_data.getString(i));
+                        //  News.setTitle(json_data.getString(i));
                         News.setTitle(temp.getString("title"));
                         News.setShortdesc(temp.getString("abstract"));
-                        News.setImage(temp.getString("image_url"));
+                        News.setImage(temp.getString("media_url"));
+                        News.setMedia_type(temp.getString("media_type"));
                         //News.setShortdesc(json_data.getString("abstract"));
                         //News.setImage(json_data.getString("image"));
                         udata.add(News);
