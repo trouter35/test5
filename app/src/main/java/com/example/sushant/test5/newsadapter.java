@@ -11,8 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.pierfrancescosoffritti.androidyoutubeplayer.player.YouTubePlayerView;
+import com.google.android.youtube.player.YouTubePlayerView;
 
 import java.util.Collections;
 import java.util.List;
@@ -45,15 +44,15 @@ public class newsadapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         myHolder.title.setText(current.title);
         //myHolder.photo.setText("Username: " + current.photo);
 
-            if(current.media_type.contentEquals("image")){
-                myHolder.image.setVisibility(View.VISIBLE);
-                myHolder.video.setVisibility(View.GONE);
-                Glide.with(context).load(current.image).into(myHolder.image);
-            }
-            else{
-                myHolder.image.setVisibility(View.GONE);
-                myHolder.video.setVisibility(View.GONE);
-            }
+        if(current.media_type.contentEquals("image")){
+            myHolder.image.setVisibility(View.VISIBLE);
+            myHolder.video.setVisibility(View.GONE);
+            Glide.with(context).load(current.image).into(myHolder.image);
+        }
+        else{
+            myHolder.image.setVisibility(View.GONE);
+            myHolder.video.setVisibility(View.GONE);
+        }
 
 
         //myHolder.username.setText("Username: " + current.username);
