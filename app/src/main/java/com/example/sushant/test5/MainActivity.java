@@ -28,7 +28,7 @@ import com.google.gson.JsonObject;
 import java.util.*;
 import org.json.*;
 
-public class MainActivity extends YouTubeBaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mNews;
     private newsadapter nAdapter;
